@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+#container {
+    position: absolute;
+    width: 40rem;
+    background-color: #ffffff;
+    padding: 1.75rem;
+    white-space: nowrap;
+
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.325rem;
+    justify-content: center;
+}
+
+#container .title {
+    color: #666666;
+    font-size: 1.75rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+#container thead th[scope=row],
+#container tbody th[scope=row]{
+    min-width: 5rem;
+    text-align: left;
+    color: #a0a0a0;
+}
+
+#container td {
+    color: #555555;
+}
+
+#container .--obj-field {
+    width: 13rem;
+    height: 2rem;
+    border: 0.0625rem solid #e0e2e4;
+    border-radius: 0.25rem;
+    color: #434345;
+    font-size: 0.875rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    margin-right: 0.325rem;
+}
+
+#container .content {
+    position: relative;
+    width: 100%;
+    max-width: 30rem;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+#container .button-container {
+    width: 100%;
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: flex-start;
+
+    transition: background-color 0.25s ease;
+}
+
+#container .--obj-button {
+    height: 2rem;
+    border: 0.0625rem solid #e0e2e4;
+    border-radius: 0.25rem;
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 0 1.1rem;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#container .--obj-button:hover {
+    background-color: #c0392b;
+}
+
+#container .--obj-button:active {
+    background-color: #a93226;
+}
+
+#container .row {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#container .link {
+    text-decoration: none;
+    height: 2rem;
+    border: 0.0625rem solid #e0e2e4;
+    border-radius: 0.25rem;
+    color: #ffffff;
+    padding: 0 1.1rem;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#container .link.-gray {
+    margin-right: 0.325rem;
+    background-color: #95a5a6;
+}
+
+#container .link.-green {
+    background-color: #1abc9c;
+}
+
+#container .link.-gray:hover {
+    background-color: #7f8c8d;
+}
+#container .link.-gray:active {
+    background-color: #707b7c;
+}
+#container .link.-green:hover {
+    background-color: #16a085;
+}
+#container .link.-green:active {
+    background-color: #148f77;
+}
+

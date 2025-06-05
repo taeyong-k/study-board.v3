@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+#list {
+    position: absolute;
+    width: 40rem;
+    background-color: #ffffff;
+    padding: 1.75rem;
+    white-space: nowrap;
+
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.325rem;
+    justify-content: center;
+}
+
+#list .title {
+    color: #666666;
+    font-size: 1.65rem;
+    font-weight: 300;
+    margin-bottom: 0.325rem;
+}
+
+#list .table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#list .table thead {
+    border-bottom: 1px solid #ddd;
+}
+
+#list .table thead th {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #757575;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#list .table thead th:nth-child(1) {
+    width: 12%;
+}
+
+#list .table thead th:nth-child(2) {
+    width: 38%;
+}
+
+#list .table thead th:nth-child(3) {
+    width: 20%;
+}
+
+#list .table thead th:nth-child(4) {
+    width: 30%;
+}
+
+#list .table tbody td,
+#list .table tbody th {
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    color: #555;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#list .table tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+#list .table tbody td a.link {
+    display: inline-block;
+    color: #3b82f6;
+    font-weight: 400;
+    max-width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#list .table tbody td a.link:hover {
+    text-decoration: underline;
+}
+
+#list .page-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+#list .page-container .page {
+    width: 2.3rem;
+    height: 2.3rem;
+    line-height: 2.3rem;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    color: #555;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+#list .page-container .page:hover {
+    background-color: #1abc9c;
+    color: #fff;
+    border-color: #16a085;
+}
+
+#list .page-container .page.-selected {
+    background-color: #1abc9c;
+    color: #fff;
+    border-color: #1abc9c;
+    cursor: default;
+    pointer-events: none;
+}
+
+#list .search-write-container {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+#list .search-write-container .left .--obj-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #9e9e9e;
+    color: white;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+#list .search-write-container .left .--obj-button:hover {
+    background-color: #7e7e7e;
+}
+
+#list .search-write-container .left .--obj-button:active {
+    background-color: #616161;
+}
+
+#list .search-write-container .right #searchForm {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#list .search-write-container .right #searchForm input[name="keyword"] {
+    width: 100%;
+    max-width: 22rem;
+    height: 2.4rem;
+    padding: 0 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    color: #434345;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+#list .search-write-container .right #searchForm input[name="keyword"]:focus {
+    border-color: #1abc9c;
+    outline: none;
+}
+
+#list .search-write-container .right #searchForm button {
+    height: 2.4rem;
+    padding: 0 1.25rem;
+    background-color: #1abc9c;
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+#list .search-write-container .right #searchForm button:hover {
+    background-color: #16a085;
+}
+
+#list .search-write-container .right #searchForm button:active {
+    background-color: #148f77;
+}

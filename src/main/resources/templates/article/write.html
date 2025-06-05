@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 작성 - ev</title>
+    <link rel="stylesheet" href="/article/assets/common.css">
+    <link rel="stylesheet" href="/article/assets/styles/write.css">
+    <script defer src="/article/assets/scripts/write.js"></script>
+</head>
+<body>
+<form id="writeForm">
+    <h1 class="title">게시글 작성</h1>
+    <label class="--obj-label">
+        <span class="---caption">작성자</span>
+        <input required autocomplete="off" class="--obj-field ---field" maxlength="10" minlength="2" placeholder="닉네임" name="nickname" type="text">
+        <input required autocomplete="off" class="--obj-field ---field" maxlength="25" minlength="4" placeholder="비밀번호" name="password" type="password">
+        <input required autocomplete="off" class="--obj-field ---field" maxlength="25" minlength="4" placeholder="비밀번호 재입력" name="passwordCheck" type="password">
+    </label>
+    <label class="--obj-label">
+        <span class="---caption">제목</span>
+        <input required autocomplete="off" class="--obj-field" maxlength="100" minlength="1" placeholder="제목" name="title" type="text">
+    </label>
+    <label class="--obj-label">
+        <span class="---caption">내용</span>
+        <textarea required autocomplete="off" placeholder="내용" name="content"></textarea>
+    </label>
+    <div class="button">
+        <button class="--obj-button" name="submit" type="submit">작성하기</button>
+    </div>
+</form>
+</body>
+</html>

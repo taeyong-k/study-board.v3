@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+#modifyForm {
+    position: absolute;
+    width: 40rem;
+    background-color: #ffffff;
+    padding: 1.75rem;
+    white-space: nowrap;
+
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.325rem;
+    justify-content: center;
+}
+
+#modifyForm .--obj-label {
+    width: 100%;
+    color: #a0a0a0;
+
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#modifyForm .--obj-field {
+    width: 100%;
+    height: 2rem;
+    border: 0.0625rem solid #e0e2e4;
+    border-radius: 0.25rem;
+    color: #434345;
+    font-size: 0.875rem;
+    padding: 0 0.5rem;
+}
+
+#modifyForm .--obj-field.---field {
+    width: 7.5rem;
+    margin-right: 0.5rem;
+    box-sizing: border-box;
+}
+
+#modifyForm .--obj-button {
+    height: 2rem;
+    border: 0.0625rem solid #e0e2e4;
+    border-radius: 0.25rem;
+    background-color: #1abc9c;
+    color: #ffffff;
+    padding: 1.05rem 1.1rem;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#modifyForm .---caption {
+    min-width: 4rem;
+    color: #a0a0a0;
+}
+
+#modifyForm .title {
+    color: #666666;
+    font-size: 1.75rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+#modifyForm textarea {
+    width: 10rem;
+    height: 10rem;
+    border: 0.0625rem solid #e0e2e4;
+    border-radius: 0.25rem;
+    color: #666666;
+    padding: 0.5rem;
+    resize: none;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+#modifyForm .button-container {
+    width: 100%;
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: flex-end;
+
+    transition: background-color 0.25s ease;
+}
+
+
+#modifyForm .--obj-button:hover {
+    background-color: #16a085;
+}
+
+#modifyForm .--obj-button:active {
+    background-color: #148f77;
+}
+
+#modifyForm .link {
+    text-decoration: none;
+    height: 2rem;
+    border: 0.0625rem solid #e0e2e4;
+    border-radius: 0.25rem;
+    background-color: #E74C3C;
+    color: #ffffff;
+    padding: 1.05rem 1.1rem;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#modifyForm .link:hover {
+    background-color: #C0392B;
+}
+
+#modifyForm .link:active {
+    background-color: #A93226;
+}
+

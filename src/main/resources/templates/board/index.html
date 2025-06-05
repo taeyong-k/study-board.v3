@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 목록 - ev</title>
+    <link rel="stylesheet" href="/article/assets/common.css">
+    <link rel="stylesheet" href="/board/assets/styles/index.css">
+    <script defer src="/board/assets/scripts/index.js"></script>
+</head>
+<body>
+<div id="list">
+    <h1 class="title">게시판 목록</h1>                                          <!-- ★제목★ -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">식별자</th>                                        <!-- ★소 제목★ -->
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">작성 일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(articles)}">
+            <td colspan="4" style="text-align:center; padding: 1rem;">
+                게시글이 존재하지 않습니다.
+            </td>
+        </tr>
+        <tr th:each="article : ${articles}">                                 <!-- ★땡겨올 게시글★ -->
+            <th scope="row" th:text="${article.getId()}"></th>               <!-- 식별자 번호 -->
+            <td>
+                <a th:if="${!article.isDeleted()}" class="link" th:href="@{/article/ (id = ${article.getId()})}" th:text="${article.getTitle()}"></a>
+                <span th:if="${article.isDeleted()}" style="color: gray; font-style: italic;">삭제된 게시글입니다</span>
+            </td>
+            <td th:text="${article.getNickname()}"></td>                   <!-- 작성자 -->
+            <td th:text="${#temporals.format(article.getCreatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>                                                                <!-- 작성 일시 -->
+        </tbody>
+        <tfoot>
+        <tr th:if="${!#lists.isEmpty(articles)}">                            <!-- ★게시글 목록 하단 페이지 버튼★ -->
+            <td colspan="5">
+                <div class="page-container">                                 <!-- 페이지 1부터 maxPage까지 순회해서 a태그 생성-->
+                    <a class="page" th:each="page : ${#numbers.sequence(1, pageVo.maxPage)}"
+                       th:text="${page}"
+                       th:href="@{/board/ (page = ${page})}"
+                       th:classappend="${page == pageVo.page}? '-selected'"></a>
+                </div>                                                       <!-- 각 페이지 클릭하면 해당 page번호를 포함해서 요청 -->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <div class="search-write-container">
+                    <div class="left">
+                        <a href="/article/write" class="--obj-button">글쓰기</a>
+                    </div>
+                    <div class="right">
+                        <form novalidate method="get" id="searchForm">
+                            <label class="--obj-label">
+                                <input autocomplete="off" class="--obj-field ---field" maxlength="50" minlength="0"
+                                       name="keyword" placeholder="검색어" type="text"
+                                       th:value="${searchVo == null ? '' : searchVo.getKeyword()}">
+                            </label>
+                            <button class="--obj-button" type="submit">검색</button>
+                        </form>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 수정 - ev</title>
+    <link rel="stylesheet" href="/article/assets/common.css">
+    <link rel="stylesheet" href="/article/assets/styles/modify.css">
+    <script defer src="/article/assets/scripts/modify.js"></script>
+    <script th:if="${article == null}">
+        alert('존재하지 않는 게시판이거나, 수정할 권한이 없습니다.');
+        if (history.length > 1) {
+            history.back();
+        } else {
+            window.close();
+        }
+    </script>
+</head>
+<body>
+<form id="modifyForm">
+    <h1 class="title">게시글 수정</h1>
+    <label class="--obj-label">
+        <span class="---caption">작성자</span>
+        <input readonly class="--obj-field ---field" maxlength="10" minlength="2" placeholder="닉네임" name="nickname" type="text" th:if="${article != null}" th:value="${article.getNickname()}">
+        <input required autocomplete="off" class="--obj-field ---field" maxlength="25" minlength="4" placeholder="비밀번호" name="password" type="password">
+    </label>
+    <label class="--obj-label">
+        <span class="---caption">제목</span>
+        <input required autocomplete="off" class="--obj-field" maxlength="100" minlength="1" placeholder="제목" name="title" type="text" th:if="${article != null}" th:value="${article.getTitle()}">
+    </label>
+    <label class="--obj-label">
+        <span class="---caption">내용</span>
+        <textarea required autocomplete="off" maxlength="10000" minlength="1" placeholder="내용" name="content" th:if="${article != null}" th:text="${article.getContent()}"></textarea>
+    </label>
+    <div class="button-container">
+        <a class="link" th:href="@{/article/ (id = ${article.getId()})}">취소</a>
+        <button class="--obj-button" name="submit" type="submit">수정하기</button>
+    </div>
+</form>
+</body>
+</html>

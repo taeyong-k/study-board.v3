@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 읽기 - ev</title>
+    <link rel="stylesheet" href="/article/assets/common.css">
+    <link rel="stylesheet" href="/article/assets/styles/index.css">
+    <script defer src="/article/assets/scripts/index.js"></script>
+    <script th:if="${article == null || article.isDeleted()}">
+        alert('존재하지 않는 게시판입니다.');
+        if (history.length > 1) {
+            history.back();
+        } else {
+            window.close();
+        }
+    </script>
+</head>
+<body>
+<div id="container" th:if="${article != null}">
+    <h1 class="title">게시글 읽기</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="row">작성자</th>
+            <td th:text="${article.getNickname()}"></td>
+        </tr>
+        <tr>
+            <th scope="row">조회수</th>
+            <td th:text="${#numbers.formatInteger(article.getView(), 0, 'COMMA')}"></td>
+        </tr>
+        <tr>
+            <th scope="row">작성 일시</th>
+            <td th:text="${#temporals.format(article.getCreatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>
+        <tr>
+            <th scope="row">제목</th>
+            <td class="content-title" colspan="5" th:text="${article.getTitle()}"></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">내용</th>
+            <td class="content" colspan="6" th:utext="${article.getContent()}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="button-container">
+            <a class="link -gray" th:href="@{/board/ (page = 1)}">목록</a>
+            <a class="link -green" th:href="@{/article/modify (id = ${article.getId()})}">수정하기</a>
+        </div>
+        <div class="button-container">
+            <input required autocomplete="off" class="--obj-field" maxlength="25" minlength="4" placeholder="비밀번호"
+                   name="password" type="password">
+            <button class="--obj-button -color-red" name="delete" type="button">삭제하기</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
