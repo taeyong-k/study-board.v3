@@ -1,0 +1,30 @@
+create schema `exam_0528`;
+
+create table `exam_0528`.`articles`
+(
+    `id`         int unsigned     not null auto_increment,
+    `nickname`   varchar(10)    not null,
+    `password`   varchar(128)   not null,
+    `title`      varchar(100)   not null,
+    `content`    varchar(10000) not null,
+    `view`       int unsigned   not null default 0,
+    `created_at` datetime       not null default now(),
+    `is_deleted` boolean        not null default false,
+    constraint primary key (`id`)
+);
+
+create schema `exam_0613`;
+
+create table `exam_0613`.`comments`
+(
+    `id`         int unsigned not null auto_increment,
+    `article_id` int unsigned not null,
+    `nickname`      varchar(10)  not null,
+    `content`       varchar(100) not null,
+    `created_at`    datetime     not null default now(),
+    `is_deleted`    boolean      not null default false,
+    constraint primary key (`id`),
+    constraint foreign key (`article_id`) references `exam_0528`.`articles` (`id`)
+        on delete cascade
+        on update cascade
+);

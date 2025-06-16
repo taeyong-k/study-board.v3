@@ -1,8 +1,13 @@
 package com.tyk.boardev.controllers;
 
 import com.tyk.boardev.entities.ArticleEntity;
+import com.tyk.boardev.entities.CommentEntity;
 import com.tyk.boardev.results.ArticleResult;
+import com.tyk.boardev.results.CommentResult;
+import com.tyk.boardev.results.Result;
+import com.tyk.boardev.results.ResultTuple;
 import com.tyk.boardev.services.ArticleService;
+import com.tyk.boardev.services.CommentService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,10 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/article")
 public class ArticleController {
     private final ArticleService articleService;
+    private final CommentService commentService;
 
     @Autowired
-    public ArticleController(ArticleService articleService) {
+    public ArticleController(ArticleService articleService, CommentService commentService) {
         this.articleService = articleService;
+        this.commentService = commentService;
     }
 
     @RequestMapping(value = "/write", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
@@ -79,5 +86,42 @@ public class ArticleController {
         model.addAttribute("article", article);
         return "article/modify";
     }
+
+//    add comment
+    @RequestMapping(value = "/comment", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public CommentEntity[] getComment (@RequestParam(value = "id",required = false) int id) {
+        ResultTuple<CommentEntity[]> result = commentService.getByArticleId(id);
+        if (result.getResult() == CommentResult.SUCCESS) {
+            CommentEntity[] comments = result.getPayload();
+            for (CommentEntity comment : comments) {
+                if (comment.isDeleted()) {
+                    comment.setContent(null);
+                }
+            }
+            return comments;
+        }
+
+        return new CommentEntity[0];
+    }
+
+    @RequestMapping(value = "/comment", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String postComment(CommentEntity comment) {
+        CommentResult result = this.commentService.write(comment);
+        JSONObject response = new JSONObject();
+        response.put("result", result.toString().toLowerCase());
+        return response.toString();
+    }
+
+    @RequestMapping(value = "/comment", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String deleteComment(CommentEntity comment) {
+        CommentResult result = this.commentService.delete(comment);
+        JSONObject response = new JSONObject();
+        response.put("result", result.toString().toLowerCase());
+        return response.toString();
+    }
+
 
 }

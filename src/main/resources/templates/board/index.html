@@ -34,7 +34,7 @@
                 <a th:if="${!article.isDeleted()}" class="link" th:href="@{/article/ (id = ${article.getId()})}" th:text="${article.getTitle()}"></a>
                 <span th:if="${article.isDeleted()}" style="color: gray; font-style: italic;">삭제된 게시글입니다</span>
             </td>
-            <td th:text="${article.getNickname()}"></td>                   <!-- 작성자 -->
+            <td th:text="${article.getNickname()}"></td>                     <!-- 작성자 -->
             <td th:text="${#temporals.format(article.getCreatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>
         </tr>                                                                <!-- 작성 일시 -->
         </tbody>

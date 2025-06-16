@@ -58,6 +58,33 @@
             <button class="--obj-button -color-red" name="delete" type="button">삭제하기</button>
         </div>
     </div>
+    <!-- add comment -->
+    <form novalidate id="commentForm">
+        <h2 class="title">댓글</h2>
+        <div class="row">
+            <label class="--obj-label">
+                <input required autocomplete="off" class="--obj-field ---field" maxlength="10" minlength="2"
+                       placeholder="닉네임" name="nickname" type="text">
+                <textarea required class="--obj-field" minlength="1" maxlength="1000" name="content"
+                          placeholder="댓글을 입력해 주세요." rows="4"></textarea>
+            </label>
+            <button class="--obj-button" type="submit">작성하기</button>
+        </div>
+    </form>
+    <div id="commentContainer">
+        <div class="comment">
+            <div class="head">
+                <span class="writer">작성자</span>
+                <span class="timestamp">0000-00-00 00:00:00</span>
+                <span class="-flex-stretch"></span>
+                <a class="action delete" data-id="${comment.id}">삭제</a>
+            </div>
+            <div class="body">
+                <span class="content">댓글 내용</span>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

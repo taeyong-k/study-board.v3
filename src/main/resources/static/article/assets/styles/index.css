@@ -125,3 +125,120 @@
     background-color: #148f77;
 }
 
+
+/* add comment */
+#commentForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#commentForm .title {
+    color: #666666;
+    font-size: 1.175rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+#commentForm .row {
+    padding-bottom: 6px;
+    border-bottom: 1px solid #ddd;
+}
+
+#commentForm .--obj-label {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+#commentForm .--obj-label > textarea {
+    width: 100%;
+    padding: 6px;
+    resize: none;
+    box-sizing: border-box;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+#commentForm .--obj-button {
+    background-color: #1abc9c;
+}
+
+#commentForm .--obj-button:hover {
+    background-color: #16a085;
+}
+
+#commentForm .--obj-button:active {
+    background-color: #148f77;
+}
+
+#commentContainer {
+    width: 100%;
+}
+
+#commentContainer .comment {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#commentContainer .comment.deleted .content {
+    color: #aaaaaa;
+    font-weight: normal;
+}
+
+#commentContainer .head {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+#commentContainer .writer {
+    font-weight: bold;
+    color: #000000;
+    margin-right: 0.5rem;
+}
+
+#commentContainer .timestamp {
+    color: #888888;
+    margin-right: 0.5rem;
+}
+
+#commentContainer .-flex-stretch {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+#commentContainer .action {
+    font-size: 0.875rem;
+    color: #e74c3c;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#commentContainer .action:hover {
+    filter: brightness(85%);
+}
+
+#commentContainer .action:active {
+    filter: brightness(75%);
+}
+
+#commentContainer .body {
+    width: 100%;
+    padding: 3px 0;
+    font-weight: bold;
+
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+
+
